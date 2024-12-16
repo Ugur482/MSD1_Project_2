@@ -1,0 +1,46 @@
+capacitance:
+
+PTFE 25µm 
+Dielllectric Strength (kV/mm) = 150
+
+
+V (Volume) of a single plate = 12,5cm^3
+
+C=κε0A/(d+x)
+
+A= 0.0025m^2
+d = 46,48 * (10^-6) m ------- (10^-6 µm mikrometre) 
+dmin = 0.415 µm 0.415 * 10^-6 m (plakalar arası min uzaklık)
+m = 33,75 gram
+K = 2.1
+ε0 = 8.85 * 10^−12 C^2/Nm^2
+
+C = 2.1 * (8.85 * 10^−12) * 0.0025 / 46,48 * (10^-6)
+C = 9.996235e-10
+
+
+E = (CV^2)/2
+E = energy in joules
+----------------------------------------------------
+
+spring constant:
+
+k = Gd^4 ÷ (8D^3 * n)
+
+G is the shear modulus of the material, 
+representing the material's ability to withstand shear stress.
+ ----> Stainless Steel 302 ASTM A313 = 11.2 x 10^6 psi, 7.72 10^10 N/m^2
+shear modulus for aluminum is about 3.5 × 10^6 psi, 2.4 × 10^10 N/m^2.
+
+d is the diameter of the wire used in the spring. 1,2mm
+D is the mean diameter of the coils. 14mm
+N is the number of active coils c
+10
+
+k = 11.2 x 10^6 * d^4 / 8*D^3*N
+k = 105.795
+
+-----------------------------------------------------------
+Vin = 5v
+R1 =250-1000
+R2 =1K

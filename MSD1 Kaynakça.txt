@@ -1,0 +1,25 @@
+PTFE Dielectrick constant :
+https://polyfluoroltd.com/blog/the-insane-electrical-properties-of-ptfe-and-how-to-interpret-them/#:~:text=The%20dielectric%20constant%20(relative%20permittivity,high%2Dfrequency%20and%20microwave%20applications.
+
+Paralel plate capacitor with dielectric formula:
+https://phys.libretexts.org/Bookshelves/College_Physics/College_Physics_1e_(OpenStax)/19%3A_Electric_Potential_and_Electric_Field/19.05%3A_Capacitors_and_Dielectrics
+
+Spring:
+https://www.vkf-renzel.com.tr/paslanmaz-celik-yay-01-0038-3.html
+
+Spring Constant calc formula:
+https://www.acxesspring.com/spring-constant-calculator.html
+
+Spring constant for steel
+https://www.britannica.com/science/shear-modulus
+
+Shear Modulus of Steel 302:
+https://www.matweb.com/search/datasheet_print.aspx?matguid=05efb28c10154f2796f4bf033363880a
+
+Diellectric Strength of PTFE:
+https://polyfluoroltd.com/blog/the-insane-electrical-properties-of-ptfe-and-how-to-interpret-them/
+
+Electric Field calculation of capacitor
+https://physics.stackexchange.com/questions/65191/what-is-the-electric-field-in-a-parallel-plate-capacitor
+https://en.wikipedia.org/wiki/Capacitor#Breakdown_voltage
+ 
