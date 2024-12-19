@@ -2,8 +2,10 @@ clear all;
 close all;
 clc;
 
+%Q değerleri eklenecek
+ 
 % ** Capacitor Variables ** %
-A = 0.0025;                          % Area of a single plate (m^2)
+A = 0.0009;                          % Area of a single plate (m^2)
 Cd = 46.48*10^-6;                    % Distance between plates (m)
 Cdmin = 0.415*10^-6;                 % Minimum distance between plates (m)
 m = 33.75*10^-3;                     % Weigth of a single plate (kg)
@@ -27,7 +29,7 @@ k = G * d^4 /(8*D^3 * N);
 
 % ** Circuit Variables ** %
 Vin = 5;                             % Input Voltage (V)
-R2 = 10^2;                           % R2 value (ohm)
+R2 = 10^3;                           % R2 value (ohm)
 
 % Function for R1 
 a = 100;
@@ -71,14 +73,14 @@ x(x <= -0.415e-6) = -0.415e-6;  % sets x to -0.415×10^-6 when it  reaches below
 % == Plot the results == %
 figure;
 subplot(3, 1, 1);
-plot(t, x, 'LineWidth', 1.5);
+plot(t, x, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Position (x)');
 title('Position vs. Time');
 grid on;
 
 subplot(3, 1, 2);
-plot(t, v, 'LineWidth', 1.5);
+plot(t, v, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Velocity (v)');
 title('Velocity vs. Time');
@@ -86,7 +88,7 @@ grid on;
 
 R1_values = R1(x);
 subplot(3, 1, 3);
-plot(x, R1_values, 'LineWidth', 1.5)
+plot(x, R1_values, 'LineWidth', 3)
 xlabel('X');
 ylabel('R1 values');
 title('X vs R1');
