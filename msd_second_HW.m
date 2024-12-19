@@ -9,10 +9,10 @@ A = 0.0009;                          % Area of a single plate (m^2)
 Cd = 46.48*10^-6;                    % Distance between plates (m)
 Cdmin = 0.415*10^-6;                 % Minimum distance between plates (m)
 m = 33.75*10^-3;                     % Weigth of a single plate (kg)
-K = 2.1;                             % Dielectric constant of PTFE 
+K = 2.1;                             % Dielectric constant of PTFE   %Only for test purposes and not used in the final calculations.
 E0 = 8.85*10^-12;                    % Vacuum permittivity (C^2/Nm^2)
 
-C = K*E0*A/Cd;
+C = E0*A/Cd;
 
 % fprintf('Capacitance = %d\n', C);
 
@@ -36,6 +36,7 @@ a = 100;
 b = 1;
 R1 = @(x) a ./ (x + b);
 
+
 % == Simulation Setup == %
 
 odefun = @(t,y)[
@@ -51,6 +52,7 @@ function [value, isterminal, direction] = lowerLimitCondition(t, y)
     isterminal = 0;  
     direction = -1;  
 end
+
 
 % == Initial conditions of the system == %
 x0 = 0;
@@ -69,17 +71,19 @@ v = y(:, 2); %velocity
 
 x(x <= -0.415e-6) = -0.415e-6;  % sets x to -0.415×10^-6 when it  reaches below
 
+% == Charge of the capacitor
+q2 = (Vin^2 .* R1(x)) ./ ((R1(x) + R2).^2) .* (E0 * A ./ (x + d));
 
 % == Plot the results == %
 figure;
-subplot(3, 1, 1);
+subplot(2, 2, 1);
 plot(t, x, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Position (x)');
 title('Position vs. Time');
 grid on;
 
-subplot(3, 1, 2);
+subplot(2, 2, 2);
 plot(t, v, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Velocity (v)');
@@ -87,11 +91,19 @@ title('Velocity vs. Time');
 grid on;
 
 R1_values = R1(x);
-subplot(3, 1, 3);
+subplot(2, 2, 3);
 plot(x, R1_values, 'LineWidth', 3)
 xlabel('X');
 ylabel('R1 values');
 title('X vs R1');
+grid on;
+
+
+subplot(2, 2, 4);
+plot(t, q2, 'LineWidth', 1)
+xlabel('Time (s)');
+ylabel('Q');
+title('Change of the Charge (Q)');
 grid on;
 
 % Display the final time of the system and thee final position
