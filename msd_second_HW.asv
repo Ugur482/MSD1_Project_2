@@ -81,7 +81,7 @@ i1 = i2 + i3;                        % Calculates the total current across the s
 
 % == Plot the results == %
 figure;
-subplot(4, 2, 1);
+subplot(3, 2, 1);
 plot(t, x, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Position (x)');
@@ -124,7 +124,7 @@ ylabel('Current (i)');
 title('Current Through the Resistors vs. Time');
 grid on;
 
-subplot(4, 2, [7,8]);
+subplot(4, 2, [7,2]);
 plot(t, i1, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Current (i)');
