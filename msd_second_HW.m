@@ -76,7 +76,7 @@ q2 = (Vin^2 .* R1(x)) ./ ((R1(x) + R2).^2) .* (E0 * A ./ (x + d)); % Calculates 
 
 % == Calculating the currents across the system == %
 i2 = gradient(q2, t);                % Calculates the dq/dt to get the current through the capacitor.
-i3 = Vin ./ (R1(x) + R2);            % Calculates the current through the resistors.
+i3 = (Vin - (Vin .* R1(x) ./ (R1(x) + R2))) ./ R1(x);                   % Calculates the current through the resistors.
 i1 = i2 + i3;                        % Calculates the total current across the system.
 
 % == Plot the results == %
