@@ -23,7 +23,7 @@ N = 10;                              % number of coils contributing to the sprin
 
 k = G * d^4 /(8*D^3 * N); 
 
-%fprintf('Spring constant k = %d\n', k);
+fprintf('Spring constant k = %d\n', k);
 
 
 % ** Circuit Variables ** %
@@ -40,7 +40,7 @@ R1 = @(x) a ./ (x + b);
 
 odefun = @(t,y)[
     y(2); % y(1) = x, y(2) = v dx/dt = v
-    (E0*A * Vin^2 * R1(y(1)) / ((R1(y(1)) + R2)^2 * 2 * Cd^2 * (y(1) + Cd) * m)) - (k / m) * y(1) % Equation is being used to calculate dv/dt
+    (E0*A * Vin^2 * R1(y(1)) / ((R1(y(1)) + R2)^2 * 2 * Cd^2 * (y(1) + Cd)^2 * m)) - (k / m) * y(1) % Equation is being used to calculate dv/dt
 ];
 
 % Event function to limit x from going below -0.415×10^-6
@@ -48,7 +48,7 @@ odefun = @(t,y)[
 function [value, isterminal, direction] = lowerLimitCondition(t, y)
     lower_limit = -0.415e-6; 
     value = y(1) - lower_limit;  
-    isterminal = 0;  
+    isterminal = 1;  
     direction = -1;  
 end
 
@@ -71,13 +71,13 @@ v = y(:, 2); % Velocity
 x(x <= -0.415e-6) = -0.415e-6;  % sets x to -0.415×10^-6 when it  reaches below
 
 % == Charge of the Capacitor == %
-q2 = (Vin^2 .* R1(x)) ./ ((R1(x) + R2).^2) .* (E0 * A ./ (x + d)); % Calculates the charge of the capacitor.
+q2 = ((Vin^2 .* R1(x)) ./ ((R1(x) + R2).^2)) .* (E0 * A ./ (x + Cd)); % Calculates the charge of the capacitor.
 
 
 % == Calculating the currents across the system == %
-i2 = gradient(q2, t);                % Calculates the dq/dt to get the current through the capacitor.
-i3 = (Vin - (Vin .* R1(x) ./ (R1(x) + R2))) ./ R1(x);                   % Calculates the current through the resistors.
-i1 = i2 + i3;                        % Calculates the total current across the system.
+i2 = gradient(q2, t);                                   % Calculates the dq/dt to get the current through the capacitor.
+i3 = (Vin - (Vin .* R1(x) ./ (R1(x) + R2))) ./ R1(x);   % Calculates the current through the resistors.
+i1 = i2 + i3;                                           % Calculates the total current across the system.
 
 % == Plot the results == %
 figure;
@@ -121,7 +121,7 @@ subplot(4, 2, 6);
 plot(t, i3, 'LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Current (i)');
-title('Current Through the Resistors vs. Time');
+title('Current Through the R1 vs. Time');
 grid on;
 
 subplot(4, 2, [7,8]);
